@@ -1,0 +1,34 @@
+﻿@model BookStore.ViewModels.Shoppingbag
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Customer.Name</h2>
+
+<text>thông tin giỏ hàng</text>
+
+@if (Model.Books.Count == 0)
+{
+    <text>Giỏ hàng của bạn rỗng</text>
+}
+else
+{
+<table class="table table-bordered table-hover">
+    <thead> 
+        <tr>
+            <th>Book</th>
+            <th>Price</th>
+        </tr>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@Html.ActionLink(book.Name, "Detail", "Books", null, null)</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+    </thead>   
+</table>
+}

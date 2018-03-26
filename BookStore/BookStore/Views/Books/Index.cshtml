@@ -1,0 +1,14 @@
+﻿@model BookStore.Models.Book
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@Model.Name</th>
+        </tr>
+    </thead>
+</table>
