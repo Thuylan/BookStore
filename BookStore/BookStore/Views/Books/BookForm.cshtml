@@ -1,0 +1,64 @@
+﻿@model BookStore.ViewModels.BookFormViewModel
+@{
+    /**/
+
+    ViewBag.Title = "BookForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Book</h2>
+@using (Html.BeginForm("Save", "Books"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Name)
+        @Html.TextBoxFor(m => m.Book.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Publisher)
+        @Html.TextBoxFor(m => m.Book.Publisher, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.Publisher)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.Price)
+        @Html.TextBoxFor(m => m.Book.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.Price)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.ReleaseDate)
+        @Html.TextBoxFor(m => m.Book.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.ReleaseDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.NumberInStock)
+        @Html.TextBoxFor(m => m.Book.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.NumberInStock)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.ContentSummary)
+        @Html.TextBoxFor(m => m.Book.ContentSummary, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.ContentSummary)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.DateAdded)
+        @Html.TextBoxFor(m => m.Book.DateAdded, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.DateAdded)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.AuthorId)
+        @Html.DropDownListFor(m => m.Book.AuthorId, new SelectList(Model.Authors, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.GenreId)
+        @Html.DropDownListFor(m => m.Book.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+
+    </div>
+    @Html.HiddenFor(m => m.Book.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

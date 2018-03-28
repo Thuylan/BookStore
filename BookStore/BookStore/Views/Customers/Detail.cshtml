@@ -1,0 +1,13 @@
+﻿@model BookStore.Models.Customer
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<ul>
+    <li><strong>Address: </strong>@Model.Address</li>
+    <li><strong>Birth Date: </strong>@Model.Birthdate</li>
+    <li><strong>Phone Number: </strong>@Model.PhoneNumber</li>
+</ul>
+

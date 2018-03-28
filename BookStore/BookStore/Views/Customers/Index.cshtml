@@ -1,34 +1,36 @@
-﻿@model BookStore.ViewModels.Shoppingbag
+﻿@model IEnumerable<BookStore.Models.Customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Customer.Name</h2>
-
-<text>thông tin giỏ hàng</text>
-
-@if (Model.Books.Count == 0)
+<h2>Customers</h2>
+<p>
+    @Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
+</p>
+@if (!Model.Any())
 {
-    <text>Giỏ hàng của bạn rỗng</text>
+    <p>No customers yet</p>
 }
 else
 {
-<table class="table table-bordered table-hover">
-    <thead> 
-        <tr>
-            <th>Book</th>
-            <th>Price</th>
-        </tr>
-    <tbody>
-        @foreach (var book in Model.Books)
-        {
+    <table class="table table-bordered table-hover">
+        <thead>
             <tr>
-                <td>@Html.ActionLink(book.Name, "Detail", "Books", null, null)</td>
-                <td></td>
+                <th>Customer</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
-        }
-    </tbody>
-    </thead>   
-</table>
+        <tbody>
+            @foreach (var Customer in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(Customer.Name, "Detail", "Customers", new { id = Customer.Id }, null)</td>
+                    <td>@Html.ActionLink("Edit","Edit","Customers",new { id = Customer.Id },null)</td>
+                    <td><button>Delete</button></td>
+                </tr>
+            }
+        </tbody>
+        </thead>
+    </table>
 }
