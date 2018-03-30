@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<BookStore.Models.Book>
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Books</h2>
@@ -26,44 +26,48 @@ else
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
+        </thead>
         <tbody>
-            @foreach (var Book in Model)
+            
+            @foreach (var book in Model)
             {
-            <tr>
-                <td>@Html.ActionLink(Book.Name, "Detail", "Books", new { id = Book.Id }, null)</td>
-                <td>@Book.Author.Name</td>
-                <td>@Book.Genre.Name</td>
-                <td>@Book.Price</td>
-                <td>@Html.ActionLink("Edit", "Edit", "Books", new { id = Book.Id }, null)</td>
-                <td><button data-book-id="@Book.Id" class="btn-link js-delete">Delete</button></td>
-            </tr>
+                <tr>
+                    <td>@Html.ActionLink(book.Name, "Detail", "Books", new { id = book.Id }, null)</td>
+                    <td>@book.Author.Name</td>
+                    <td>@book.Genre.Name</td>
+                    <td>@book.Price</td>
+                    <td>@Html.ActionLink("Edit", "Edit", "Books", new { id = book.Id }, null)</td>
+                    <td><button data-book-id="@book.Id" class="btn-link js-delete">Delete</button></td>
+                </tr>
             }
         </tbody>
-        </thead>
+        
     </table>
 }
-@section scripts{
-    
+@section scripts
+{
     <script>
         $(document).ready(function () {
-            $("#books.js-delete").on("click", function () {
+            $("#books").DataTable();
+
+            $("#books").on("click",".js-delete", function () {
                 var button = $(this);
-                bootbox.confirm("Are you sure to delete this book?", function (result) {
+
+                bootbox.confirm("Are you sure to want to delete this book?", function (result) {
                     if (result) {
                         $.ajax({
-                            url: "/api/books" + button.attr("data-book-id"),
+                            url: "/api/books/" + button.attr("data-book-id"),
                             method: "DELETE",
                             success: function () {
                                 button.parents("tr").remove();
                             }
+
                         });
                     }
                 });
+
             });
-
         });
-
     </script>
 
-
-    }
+}

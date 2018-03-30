@@ -766,7 +766,7 @@
     },
     cs : {
       OK      : "OK",
-      CANCEL  : "Zru�it",
+      CANCEL  : "Zrušit",
       CONFIRM : "Potvrdit"
     },
     da : {
@@ -780,9 +780,9 @@
       CONFIRM : "Akzeptieren"
     },
     el : {
-      OK      : "??t??e?",
-      CANCEL  : "?????s?",
-      CONFIRM : "?p?�e�a??s?"
+      OK      : "Εντάξει",
+      CANCEL  : "Ακύρωση",
+      CONFIRM : "Επιβεβαίωση"
     },
     en : {
       OK      : "OK",
@@ -810,9 +810,9 @@
       CONFIRM : "D'accord"
     },
     he : {
-      OK      : "?????",
-      CANCEL  : "?????",
-      CONFIRM : "?????"
+      OK      : "אישור",
+      CANCEL  : "ביטול",
+      CONFIRM : "אישור"
     },
     id : {
       OK      : "OK",
@@ -826,18 +826,18 @@
     },
     ja : {
       OK      : "OK",
-      CANCEL  : "?????",
-      CONFIRM : "??"
+      CANCEL  : "キャンセル",
+      CONFIRM : "確認"
     },
     lt : {
       OK      : "Gerai",
-      CANCEL  : "At�aukti",
+      CANCEL  : "Atšaukti",
       CONFIRM : "Patvirtinti"
     },
     lv : {
       OK      : "Labi",
       CANCEL  : "Atcelt",
-      CONFIRM : "Apstiprinat"
+      CONFIRM : "Apstiprināt"
     },
     nl : {
       OK      : "OK",
@@ -852,7 +852,7 @@
     pl : {
       OK      : "OK",
       CANCEL  : "Anuluj",
-      CONFIRM : "Potwierdz"
+      CONFIRM : "Potwierdź"
     },
     pt : {
       OK      : "OK",
@@ -861,8 +861,8 @@
     },
     ru : {
       OK      : "OK",
-      CANCEL  : "??????",
-      CONFIRM : "?????????"
+      CANCEL  : "Отмена",
+      CONFIRM : "Применить"
     },
     sv : {
       OK      : "OK",
@@ -871,18 +871,18 @@
     },
     tr : {
       OK      : "Tamam",
-      CANCEL  : "Iptal",
+      CANCEL  : "İptal",
       CONFIRM : "Onayla"
     },
     zh_CN : {
       OK      : "OK",
-      CANCEL  : "??",
-      CONFIRM : "??"
+      CANCEL  : "取消",
+      CONFIRM : "确认"
     },
     zh_TW : {
       OK      : "OK",
-      CANCEL  : "??",
-      CONFIRM : "??"
+      CANCEL  : "取消",
+      CONFIRM : "確認"
     }
   };
 

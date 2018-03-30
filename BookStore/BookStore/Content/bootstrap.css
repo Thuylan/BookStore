@@ -6814,3 +6814,10 @@ td.visible-print {
     display: none !important;
   }
 }
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}

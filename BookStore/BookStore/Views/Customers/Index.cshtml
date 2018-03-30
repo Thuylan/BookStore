@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<BookStore.Models.Customer>
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Customers</h2>
@@ -14,23 +16,51 @@
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customer</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
+        </thead>
         <tbody>
             @foreach (var Customer in Model)
             {
                 <tr>
                     <td>@Html.ActionLink(Customer.Name, "Detail", "Customers", new { id = Customer.Id }, null)</td>
-                    <td>@Html.ActionLink("Edit","Edit","Customers",new { id = Customer.Id },null)</td>
-                    <td><button>Delete</button></td>
+                    <td>@Html.ActionLink("Edit", "Edit", "Customers", new { id = Customer.Id }, null)</td>
+                    <td><button data-customer-id="@Customer.Id" class="btn-link js-delete">Delete</button></td>
                 </tr>
             }
         </tbody>
-        </thead>
+        
     </table>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#customers").DataTable();
+
+            $("#customers").on("click",".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure to want to delete this customer?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function () {
+                                button.parents("tr").remove();
+                            }
+
+                        });
+                    }
+                });
+
+            });
+        });
+    </script>
+
 }
