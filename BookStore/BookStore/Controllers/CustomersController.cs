@@ -53,7 +53,6 @@ namespace BookStore.Controllers
                 customerInDb.Address = customer.Address;
                 customerInDb.Birthdate = customer.Birthdate;
                 customerInDb.PhoneNumber = customer.PhoneNumber;
-
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Customers");
