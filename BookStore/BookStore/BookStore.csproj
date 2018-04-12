@@ -206,6 +206,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BooksController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -221,6 +222,10 @@
     <Compile Include="Migrations\201803261053577_InitialModel.Designer.cs">
       <DependentUpon>201803261053577_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804100717577_addImgUrlforBook.cs" />
+    <Compile Include="Migrations\201804100717577_addImgUrlforBook.Designer.cs">
+      <DependentUpon>201804100717577_addImgUrlforBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
@@ -231,6 +236,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AuthorModels.cs" />
     <Compile Include="ViewModels\BookFormViewModel.cs" />
     <Compile Include="ViewModels\Shoppingbag.cs" />
   </ItemGroup>
@@ -344,10 +350,28 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\MyCSS.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="NivoSlider\jquery-1.7.1.min.js" />
+    <Content Include="NivoSlider\jquery.nivo.slider.js" />
+    <Content Include="NivoSlider\jquery.nivo.slider.pack.js" />
+    <Content Include="NivoSlider\nivo-slider.css" />
+    <Content Include="Picture\101-truyen-ngay-xua.jpg" />
+    <Content Include="Picture\shopping_cart.jpg" />
+    <Content Include="Picture\Dac-nhan-tam.jpg" />
+    <Content Include="Picture\de-men-phieu-luu-ky.jpg" />
+    <Content Include="Picture\khong-gia-dinh.jpg" />
+    <Content Include="Picture\ky-uc-phieu-lang.jpg" />
+    <Content Include="Picture\NivoSlider\logo-book-store.png" />
+    <Content Include="Picture\NivoSlider\book.jpg" />
+    <Content Include="Picture\NivoSlider\Law-Library-Book.jpg" />
+    <Content Include="Picture\search.jpg" />
+    <Content Include="Picture\NivoSlider\slide_previous_books_small.jpg" />
+    <Content Include="Picture\tieng_goi_noi_hoang_da.jpg" />
+    <Content Include="Picture\truyen-co-grim.jpg" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -472,6 +496,11 @@
     <Content Include="Views\Customers\Detail.cshtml" />
     <Content Include="Views\Books\BookForm.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Authors\Index.cshtml" />
+    <Content Include="Views\Books\ThieuNhi.cshtml" />
+    <Content Include="Views\Shared\myLayout.cshtml" />
+    <Content Include="Views\Books\Vanhoc.cshtml" />
+    <Content Include="Views\Books\Publisher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -492,6 +521,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803261053577_InitialModel.resx">
       <DependentUpon>201803261053577_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804100717577_addImgUrlforBook.resx">
+      <DependentUpon>201804100717577_addImgUrlforBook.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

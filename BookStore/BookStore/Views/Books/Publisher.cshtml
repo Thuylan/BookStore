@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+@{
+    /**/
+
+    ViewBag.Title = "Nha xuat ban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Product list</h2>
+
+
+@if (!Model.Any())
+{
+    <p>No book yet</p>
+}
+else
+{
+    <div id="books" class="">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-2">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="~/Picture/@book.ImgUrl" height="200" width="140" />
+                    @Html.ActionLink(book.Name, "Detail", "Books", new { id = book.Id }, null);
+                    <br />
+                    @book.Author.Name
+                    <br />
+                    @book.Genre.Name
+                    <br />
+                    @book.Price
+                </div>
+
+            </div>
+
+        }
+    </div>
+
+}

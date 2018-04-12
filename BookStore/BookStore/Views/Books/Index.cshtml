@@ -6,51 +6,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Books</h2>
+<h2 class="text-center">Product list</h2>
 <p>
-    @Html.ActionLink("New Book", "New", "Books", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New book", "New", "Books", null, new { @class = "btn btn-primary" })
 </p>
+
 @if (!Model.Any())
 {
-    <p>No books yet</p>
+    <p>No book yet</p>
 }
 else
 {
-    <table id="books" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Book</th>
-                <th>Author</th>
-                <th>Genre</th>
-                <th>Price</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            @foreach (var book in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(book.Name, "Detail", "Books", new { id = book.Id }, null)</td>
-                    <td>@book.Author.Name</td>
-                    <td>@book.Genre.Name</td>
-                    <td>@book.Price</td>
-                    <td>@Html.ActionLink("Edit", "Edit", "Books", new { id = book.Id }, null)</td>
-                    <td><button data-book-id="@book.Id" class="btn-link js-delete">Delete</button></td>
-                </tr>
-            }
-        </tbody>
-        
-    </table>
+    <div id="books" class="">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-2">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="~/Picture/@book.ImgUrl" height="200" width="140" />
+
+                    @Html.ActionLink(book.Name, "Detail", "Books", new { id = book.Id }, null);
+                    <br />
+                    @book.Author.Name
+                    <br />
+                    @book.Genre.Name
+                    <br />
+                    @book.Price
+                    <br />
+                    @Html.ActionLink("Edit", "Edit", "Books", new { id = book.Id }, null)
+                    <br />
+                    <button data-book-id="@book.Id" class="btn-link js-delete">Delete</button>
+                </div>
+            </div>
+        }
+    </div>
+
 }
 @section scripts
 {
     <script>
         $(document).ready(function () {
-            $("#books").DataTable();
+            $("#books").data();
 
-            $("#books").on("click",".js-delete", function () {
+            $("#books").on("click", ".js-delete", function () {
                 var button = $(this);
 
                 bootbox.confirm("Are you sure to want to delete this book?", function (result) {

@@ -6,38 +6,83 @@
     <title>@ViewBag.Title - Book Store</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/MyCSS.css" rel="stylesheet" />
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("BookStore", "Index", "Books", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Books", "Index", "Books")</li>
-                    <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <!--logo-->
+        <div id="logo">
+        <img src="~/Picture/NivoSlider/Law-Library-Book.jpg"alt="LOGO"/>
+        </div>
+     <!--menu-->
+        <div class="navbar navbar-inverse ">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("BookStore", "Index", "Books", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <div id="textboxSearch">
+                        @using (Html.BeginForm())
+                            {
+                             @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "textboxTimKiem", @placeholder = "Search..." })
+                            }
+                    </div>
+                    <div id="imgSearch">
+                        <button type="submit"><img src="~/Picture/search.jpg" /></button>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Books", "Index", "Books")</li>
+                        <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+                        <li class="dropdown">
+                            <button class="dropbtn">
+                                Genre
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Văn học", "Vanhoc", "Books")
+                                @Html.ActionLink("Thường thức đời sống", "ThuongthucDS", "Books")
+                                @Html.ActionLink("Thiếu nhi", "ThieuNhi", "Books")
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <button class="dropbtn">
+                                Publisher <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("NXB Văn học", "NXBVanhoc", "Books")
+                                @Html.ActionLink("NXB Hà Nội", "NXBHaNoi", "Books")
+                                @Html.ActionLink("NXB Nhã nam", "NXBNhaNam", "Books")
+                            </div>
+                        </li>
+
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    
+                    
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
+    <!--body-main-->
+        <div class="container body-content">
+            <div id="main">
+                @RenderBody()
+            </div>
+        </div>
+   
+    <!--footer-->
+    <div id="footer" class="body-content">
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
-    
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
 </body>

@@ -14,6 +14,8 @@ namespace BookStore.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        public string ImgUrl { get; set; }
+
         public Author Author { get; set; }
 
         [Required]

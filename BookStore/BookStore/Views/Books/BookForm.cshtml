@@ -1,14 +1,21 @@
 ﻿@model BookStore.ViewModels.BookFormViewModel
 @{
-    /**/
+                /**/
 
-    ViewBag.Title = "BookForm";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "BookForm";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>New Book</h2>
 @using (Html.BeginForm("Save", "Books"))
 {
+    <div class="form-group">
+        @Html.LabelFor(m => m.Book.ImgUrl)
+        @Html.TextBoxFor(m => m.Book.ImgUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Book.ImgUrl)
+    </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Book.Name)
         @Html.TextBoxFor(m => m.Book.Name, new { @class = "form-control" })

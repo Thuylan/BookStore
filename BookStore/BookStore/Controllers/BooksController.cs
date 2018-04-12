@@ -67,6 +67,7 @@ namespace BookStore.Controllers
             {
                 var bookInDb = _context.Books.Single(b => b.Id == book.Id);
 
+                bookInDb.ImgUrl = book.ImgUrl;
                 bookInDb.Name = book.Name;
                 bookInDb.Publisher = book.Publisher;
                 bookInDb.Price = book.Price;
@@ -104,6 +105,48 @@ namespace BookStore.Controllers
             if (book == null)
                 return HttpNotFound();
             return View(book);
+        }
+        public ActionResult ThieuNhi()
+        {
+            var books = from b in _context.Books.Include(m => m.Author).Include(m=>m.Genre)
+                        where b.GenreId==2
+                        select b;
+            return View(books);
+        }
+        public ActionResult Vanhoc()
+        {
+            var books = from b in _context.Books.Include(m => m.Author).Include(m => m.Genre)
+                        where b.GenreId == 1
+                        select b;
+            return View(books);
+        }
+        public ActionResult ThuongthucDS()
+        {
+            var books = from b in _context.Books.Include(m => m.Author).Include(m => m.Genre)
+                        where b.GenreId == 3
+                        select b;
+            return View("Vanhoc",books);
+        }
+        public ActionResult NXBHaNoi()
+        {
+            var books = from b in _context.Books.Include(m => m.Author).Include(m => m.Genre)
+                        where b.Publisher == "NXB Hà Nội"
+                        select b;
+            return View("Publisher",books);
+        }
+        public ActionResult NXBVanhoc()
+        {
+            var books = from b in _context.Books.Include(m => m.Author).Include(m => m.Genre)
+                        where b.Publisher == "NXB Văn học"
+                        select b;
+            return View("Publisher", books);
+        }
+        public ActionResult NXBNhaNam()
+        {
+            var books = from b in _context.Books.Include(m => m.Author).Include(m => m.Genre)
+                        where b.Publisher == "NXB Nhã Nam"
+                        select b;
+            return View("Publisher", books);
         }
     }
 }

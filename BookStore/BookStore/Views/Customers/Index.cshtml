@@ -27,11 +27,11 @@ else
         <tbody>
             @foreach (var Customer in Model)
             {
-                <tr>
-                    <td>@Html.ActionLink(Customer.Name, "Detail", "Customers", new { id = Customer.Id }, null)</td>
-                    <td>@Html.ActionLink("Edit", "Edit", "Customers", new { id = Customer.Id }, null)</td>
-                    <td><button data-customer-id="@Customer.Id" class="btn-link js-delete">Delete</button></td>
-                </tr>
+            <tr>
+                <td>@Html.ActionLink(Customer.Name, "Detail", "Customers", new { id = Customer.Id }, null)</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Customers", new { id = Customer.Id }, null)</td>
+                <td><button data-customer-id="@Customer.Id" class="btn-link js-delete">Delete</button></td>
+            </tr>
             }
         </tbody>
         
