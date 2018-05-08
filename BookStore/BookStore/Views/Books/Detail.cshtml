@@ -5,6 +5,7 @@
 }
 
 <h2>@Model.Name</h2>
+<img class="img-responsive" src="~/Picture/@Model.ImgUrl" height="200" width="140" />
 <ul>
     <li><strong>Genre:</strong> @Model.Genre.Name</li>
     <li><strong>Author:</strong> @Model.Author.Name</li>
@@ -14,3 +15,11 @@
     <li><strong>Content Summary:</strong>@Model.ContentSummary</li>
     <li><strong>Number in stock:</strong> @Model.NumberInStock</li>
 </ul>
+<br />
+@using (Html.BeginForm("AddToCart", "Cart", new { @IdB = Model.Id, @strUrl = Request.Url.ToString() }))
+{
+    <input type="submit" style="background-color:chocolate" value="AddToCart" ; class="btn btn-primary" />
+}
+<p>
+    @Html.ActionLink("Add To Cart", "Cart", "Cart", new { @class="btn btn-primary"})
+</p>

@@ -7,6 +7,7 @@ using System.Web.Http;
 using BookStore.Dtos;
 using BookStore.Models;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace BookStore.Controllers.Api
 {
@@ -18,9 +19,11 @@ namespace BookStore.Controllers.Api
             _context = new ApplicationDbContext();
         }
         //Get api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
+            var customers = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return Ok(customers);
+            //return _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
         }
         //Get api/customers/1
         public IHttpActionResult GetCustomer(int id)

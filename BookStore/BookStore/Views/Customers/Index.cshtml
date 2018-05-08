@@ -41,7 +41,7 @@ else
 {
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable();
+            var cus = $("#customers").DataTable();
 
             $("#customers").on("click",".js-delete", function () {
                 var button = $(this);
@@ -52,7 +52,7 @@ else
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
                             success: function () {
-                                button.parents("tr").remove();
+                                cus.row(button.parents("tr")).remove().draw();
                             }
 
                         });

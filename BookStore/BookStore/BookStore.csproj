@@ -208,6 +208,7 @@
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -501,6 +503,9 @@
     <Content Include="Views\Shared\myLayout.cshtml" />
     <Content Include="Views\Books\Vanhoc.cshtml" />
     <Content Include="Views\Books\Publisher.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\ParticalCart.cshtml" />
+    <Content Include="Views\Books\IndexforCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,7 +27,13 @@ namespace BookStore.Controllers
         public ActionResult Index()
         {
             var books = _context.Books.Include(m => m.Genre).Include(m => m.Author).ToList();
-            return View(books);
+            if (User.IsInRole("Admin"))
+            {
+                return View("Index", books);
+            }
+            else
+
+            return View("IndexforCustomer",books);
         }
         public ActionResult New()
         {

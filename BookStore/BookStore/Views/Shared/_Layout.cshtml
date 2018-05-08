@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/MyCSS.css" rel="stylesheet" />
-
+    
 </head>
 <body>
     <!--logo-->
@@ -63,7 +63,7 @@
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
                     
-                    
+                    @Html.Action("ParticalCart","Cart")
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>
